@@ -1,0 +1,32 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="steam.Master.cs" Inherits="SteamStore.Site1" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <%--<title>ERR | Steampowered</title>--%>
+    <link rel="stylesheet" href="styles/reset.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <div>
+        <div id="navContainer">
+            <nav>
+                <div class="navItem">
+                    <img src="images/steam.png" alt="steam" />
+                </div>
+                <div class="navItem">STORE</div>
+                <div class="navItem">GAMES</div>
+                <div class="navItem">FRIENDS</div>
+                <div id="loginBar">LOGIN</div>
+            </nav>
+        </div>
+        <div id="content">
+            <asp:ContentPlaceHolder ID="contentPlaceHolder" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </div>
+</body>
+</html>
