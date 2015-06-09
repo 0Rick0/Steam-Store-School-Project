@@ -75,10 +75,13 @@
     <Content Include="games.html" />
     <Content Include="images\steam.png" />
     <Content Include="model.html" />
+    <Content Include="styles\games.css" />
     <Content Include="styles\gamesmenu.css" />
     <Content Include="GamesMenu.ascx" />
     <Content Include="styles\login.css" />
     <Content Include="styles\reset.css" />
+    <Content Include="smallGameView.ascx" />
+    <Content Include="styles\smallGame.css" />
     <Content Include="styles\style.css" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -114,6 +117,13 @@
     </Compile>
     <Compile Include="GamesMenu.ascx.designer.cs">
       <DependentUpon>GamesMenu.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="smallGameView.ascx.cs">
+      <DependentUpon>smallGameView.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="smallGameView.ascx.designer.cs">
+      <DependentUpon>smallGameView.ascx</DependentUpon>
     </Compile>
   </ItemGroup>
   <PropertyGroup>

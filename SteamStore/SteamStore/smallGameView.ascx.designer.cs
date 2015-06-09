@@ -7,27 +7,36 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SteamStore {
+namespace SteamStore.styles {
     
     
-    public partial class index {
+    public partial class smallGameView {
         
         /// <summary>
-        /// GamesMenu control.
+        /// gameContainerLink control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::SteamStore.styles.GamesMenu GamesMenu;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor gameContainerLink;
         
         /// <summary>
-        /// innerContent control.
+        /// gameContainerImage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl innerContent;
+        protected global::System.Web.UI.HtmlControls.HtmlImage gameContainerImage;
+        
+        /// <summary>
+        /// gameContainerTitle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl gameContainerTitle;
     }
 }

@@ -15,9 +15,9 @@
         <div id="navContainer">
             <nav>
                 <div class="navItem">
-                    <img src="images/steam.png" alt="steam" />
+                    <a href="/"><img src="images/steam.png" alt="steam" /></a>
                 </div>
-                <div class="navItem">STORE</div>
+                <div class="navItem"><a href="/index.aspx">STORE</a></div>
                 <div class="navItem">GAMES</div>
                 <div class="navItem">FRIENDS</div>
                 <div id="loginBar" runat="server" ClientIDMode="Static">LOGIN</div>

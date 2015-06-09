@@ -22,7 +22,7 @@ namespace SteamStore
             }
             else
             {
-                loginBar.InnerHtml = "<a href=\"\\Login.aspx\">LOGIN</a>";
+                loginBar.InnerHtml = "<a href=\"/Login.aspx\">LOGIN</a>";
             }
         }
     }

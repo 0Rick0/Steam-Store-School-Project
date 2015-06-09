@@ -40,18 +40,21 @@ nav{
 	vertical-align: middle;
 }
 
-#loginBar,
-#loginBar a:link,
-#loginBar a:hover
-#loginBar a:active,
-#loginBar a:visited{
+#loginBar {
+    float: right;   
+}
+
+nav a,
+nav a:link,
+nav a:hover
+nav a:active,
+nav a:visited{
 	display: inline-table;
 	color: #b8b6b4;
-	float: right;
     text-decoration: none;
 }
 
-#loginBar a:hover {
+nav a:hover {
     color: #fff;
 }
 
