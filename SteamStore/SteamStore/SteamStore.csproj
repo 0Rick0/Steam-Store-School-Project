@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="index.aspx" />
+    <Content Include="Login.aspx" />
     <Content Include="packages.config" />
     <Content Include="steam.Master" />
     <None Include="Web.Debug.config">
@@ -74,8 +75,9 @@
     <Content Include="games.html" />
     <Content Include="images\steam.png" />
     <Content Include="model.html" />
-    <Content Include="styles\games.css" />
+    <Content Include="styles\gamesmenu.css" />
     <Content Include="GamesMenu.ascx" />
+    <Content Include="styles\login.css" />
     <Content Include="styles\reset.css" />
     <Content Include="styles\style.css" />
     <Content Include="Web.config">
@@ -83,12 +85,20 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="dbProvider.cs" />
     <Compile Include="index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="steam.Master.cs">

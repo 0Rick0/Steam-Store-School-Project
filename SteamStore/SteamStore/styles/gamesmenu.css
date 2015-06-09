@@ -79,7 +79,7 @@
 #sb{
     background: rgba( 103, 193, 245, 0.4 );
     border: 1px solid rgba( 77, 112, 255, 0.4 );
-    display: inline;
+    display: inline-table;
     padding: 2px;
     border-radius: 5px;
 }
@@ -99,4 +99,16 @@
     padding: 0px;
     margin: 0px;
     height: 100%;
+}
+
+#categories li a:link,
+#categories li a:hover
+#categories li a:active,
+#categories li a:visited{
+	color: #67c1f5;
+    text-decoration: none;
+}
+
+#categories li a:hover {
+    color: #fff;
 }

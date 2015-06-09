@@ -40,10 +40,19 @@ nav{
 	vertical-align: middle;
 }
 
-#loginBar{
-	display: inline-block;
+#loginBar,
+#loginBar a:link,
+#loginBar a:hover
+#loginBar a:active,
+#loginBar a:visited{
+	display: inline-table;
 	color: #b8b6b4;
 	float: right;
+    text-decoration: none;
+}
+
+#loginBar a:hover {
+    color: #fff;
 }
 
 #content{

@@ -11,7 +11,19 @@ namespace SteamStore
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            UpdateLoginLabel();
+        }
 
+        public void UpdateLoginLabel()
+        {
+            if (Session["loggedin"] is bool && (bool)Session["loggedIn"])
+            {
+                loginBar.InnerHtml = string.Format("<a href=\"/profile.aspx\">{0}</a>", Session["username"]);
+            }
+            else
+            {
+                loginBar.InnerHtml = "<a href=\"\\Login.aspx\">LOGIN</a>";
+            }
         }
     }
 }

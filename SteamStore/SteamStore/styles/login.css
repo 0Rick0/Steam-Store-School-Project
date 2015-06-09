@@ -1,0 +1,53 @@
+﻿.loginLabel {
+    color: #fff;
+    display: block;
+    margin-top: 12px;
+}
+.loginTb {
+    background-color: #2a3f5a;
+    color: #fff;
+    border: 1px solid #000;
+    -ms-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: 1px 1px 0px #45556c;
+    -ms-box-shadow: 1px 1px 0px #45556c;
+    box-shadow: 1px 1px 0px #45556c;
+    display: block;
+    margin-top: 5px;
+}
+
+.subButton {
+    color: #67c1f5;
+    /*background-color: #67c1f5; same as color*/
+    background-color: rgba(103, 193, 245, 0.2);
+    padding: 0px 15px;
+    line-height: 32px;
+    -ms-border-radius: 5px;
+    border-radius: 5px;
+    display: block;
+    border: 0px;
+    margin-top: 12px;
+}
+
+#frmLogin {
+    background-color: #000000;
+    background-color: rgba(0, 0, 0, 0.2);
+    margin-top: 12px;
+    padding: 15px;
+}
+
+#frmLogin form, #info{
+    display: inline-table;
+    color: #fff;
+}
+
+#info {
+    float: right;
+    width: 300px;
+}
+
+#frmLogin .loginItem:not(:first-child) {
+    margin-left: 6px;
+    padding-left: 6px;
+    border-left: 1px solid rgba(103, 193, 245, 0.2);;
+}
