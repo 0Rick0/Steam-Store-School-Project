@@ -90,7 +90,7 @@ namespace SteamStore.styles
 
             var sb = new StringBuilder();
             sb.Append("<li>");
-            sb.Append(string.Format("<a href=\"?id={0}\">{1}</a>",Id,Text));
+            sb.Append(string.Format("<a href=\"index.aspx?id={0}\">{1}</a>",Id,Text));
             if (Children.Count > 0)
             {
                 sb.Append("\n<ul>");

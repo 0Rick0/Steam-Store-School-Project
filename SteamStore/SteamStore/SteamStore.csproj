@@ -60,10 +60,16 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Game.aspx" />
+    <Content Include="gameViewPack.ascx" />
     <Content Include="index.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="packages.config" />
+    <None Include="Scripts\jquery-1.11.3.intellisense.js" />
+    <Content Include="Scripts\jquery-1.11.3.js" />
+    <Content Include="Scripts\jquery-1.11.3.min.js" />
     <Content Include="steam.Master" />
+    <Content Include="Scripts\jquery-1.11.3.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -78,6 +84,7 @@
     <Content Include="styles\games.css" />
     <Content Include="styles\gamesmenu.css" />
     <Content Include="GamesMenu.ascx" />
+    <Content Include="styles\gameview.css" />
     <Content Include="styles\login.css" />
     <Content Include="styles\reset.css" />
     <Content Include="smallGameView.ascx" />
@@ -89,6 +96,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="dbProvider.cs" />
+    <Compile Include="Game.aspx.cs">
+      <DependentUpon>Game.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Game.aspx.designer.cs">
+      <DependentUpon>Game.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="gameViewPack.ascx.cs">
+      <DependentUpon>gameViewPack.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="gameViewPack.ascx.designer.cs">
+      <DependentUpon>gameViewPack.ascx</DependentUpon>
+    </Compile>
     <Compile Include="index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

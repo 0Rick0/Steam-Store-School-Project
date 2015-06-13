@@ -23,7 +23,7 @@ namespace SteamStore.styles
             gameContainerImage.Src = string.Format("/images/games/{0}.png",ImageId);
             gameContainerTitle.InnerText = Title;
             gameContainerImage.Alt = Title;
-            gameContainerLink.HRef = "?id="+GameId;
+            gameContainerLink.HRef = "game.aspx?appId="+GameId;
         }
     }
 }
