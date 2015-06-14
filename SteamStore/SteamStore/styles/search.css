@@ -16,3 +16,11 @@
     text-decoration: none;
     font-weight: bold;
 }
+
+#innerContent h2 {
+    color: white;
+    font-size: x-large;
+    font-weight: bold;
+    margin-top: 12px;
+    margin-bottom: 6px;
+}
