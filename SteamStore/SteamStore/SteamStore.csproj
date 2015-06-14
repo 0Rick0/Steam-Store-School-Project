@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="addBalance.aspx" />
+    <Content Include="addFriend.aspx" />
     <Content Include="BuyGame.aspx" />
     <Content Include="Game.aspx" />
     <Content Include="gameViewPack.ascx" />
@@ -112,6 +113,13 @@
     </Compile>
     <Compile Include="addBalance.aspx.designer.cs">
       <DependentUpon>addBalance.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="addFriend.aspx.cs">
+      <DependentUpon>addFriend.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="addFriend.aspx.designer.cs">
+      <DependentUpon>addFriend.aspx</DependentUpon>
     </Compile>
     <Compile Include="BuyGame.aspx.cs">
       <DependentUpon>BuyGame.aspx</DependentUpon>

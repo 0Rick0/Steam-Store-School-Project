@@ -6,13 +6,19 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contentPlaceHolder" runat="server">
     <div id="innerContent">
-        <% if (IsSelf) %>
-        <%
+        <% if (IsSelf)
            { %>
         <form action="/addBalance.aspx" method="post" id="addBalanceForm">
             <label for="addbalance">Add balance to account</label>
             <input type="number" id="addbalance" name="addbalance"/>
             <input type="submit"/>
+        </form>
+        <% } %>
+        <% if (!IsFriend)
+           { %>
+        <form action="/addFriend.aspx" method="post" id="addFriend">
+            <input type="hidden" name="friendId" value="<%=UserId %>"/>
+            <input type="submit" value="Add Friend" id="addFriendbt"/>
         </form>
         <% } %>
         <div id="top">

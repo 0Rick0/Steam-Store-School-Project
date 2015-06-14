@@ -15,6 +15,7 @@ namespace SteamStore
         protected bool IsSelf { get; set; }
 
         protected int UserId { get; set; }
+        protected bool IsFriend { get; set; }
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -29,7 +30,8 @@ namespace SteamStore
                         Response.Redirect("Login.aspx?returnUrl="+Server.UrlEncode(Request.Url.ToString()));
                     }
                     Username = (string)Session["Username"];
-                    IsSelf = true;
+                    IsSelf = true;//the add form balance will be displayed
+                    IsFriend = true;//nothing will be displayed
                     //get username, userId and balance
                     using (var com = con.CreateCommand())
                     {
@@ -71,6 +73,40 @@ namespace SteamStore
                         r.Read();
                         UserId = Convert.ToInt32((long)r["userId"]);
                         Username = (string)r["username"];
+                    }
+                    //check if the user is logged in and if the userid is a friend
+                    if (!(Session["loggedIn"] == null || (bool)Session["loggedIn"] == false))
+                    {
+                        using (var com = con.CreateCommand())
+                        {
+                            com.CommandText = "SELECT count(*) " +
+                                              "FROM steam_user u, friend f " +
+                                              "WHERE u.userid = f.userid " +
+                                              "AND username = :usrn " +
+                                              "AND friendUserId = :usrid";
+
+
+                            var pusr = com.CreateParameter();
+                            pusr.Direction = ParameterDirection.Input;
+                            pusr.DbType = DbType.String;
+                            pusr.Value = Session["username"];
+                            pusr.ParameterName = "usrn";
+                            com.Parameters.Add(pusr);
+
+                            var puid = com.CreateParameter();
+                            puid.Direction = ParameterDirection.Input;
+                            puid.DbType = DbType.Int32;
+                            puid.Value = UserId;
+                            puid.ParameterName = "usrid";
+                            com.Parameters.Add(puid);
+
+                            var cnt = Convert.ToInt32(com.ExecuteScalar());
+                            IsFriend = cnt > 0;
+                        }
+                    }
+                    else
+                    {
+                        IsFriend = true;//nothing will be displayed
                     }
                 }
                 //get friends
