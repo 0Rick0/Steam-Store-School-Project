@@ -20,9 +20,9 @@ namespace SteamStore
             {
                 Session.Clear();//remove all data from session if loggout
                 Session["loggedIn"] = false;
-                if (!string.IsNullOrEmpty(Request.QueryString["returnpage"]))//if a return page is specified then goto that page
+                if (!string.IsNullOrEmpty(Request.QueryString["returnUrl"]))//if a return page is specified then goto that page
                 {
-                    Response.Redirect(Request.QueryString["returnpage"]);
+                    Response.Redirect(Server.UrlDecode(Request.QueryString["returnUrl"]));
                 }
             }
         }
@@ -63,6 +63,10 @@ namespace SteamStore
                 Session["username"] = user;
                 lblPassword.Text = "loggedIn!";
                 ((Site1) Master).UpdateLoginLabel();
+                if (!string.IsNullOrEmpty(Request.QueryString["returnUrl"]))
+                {
+                    Response.Redirect(Server.UrlDecode(Request.QueryString["returnUrl"]));
+                }
             }
             else
             {

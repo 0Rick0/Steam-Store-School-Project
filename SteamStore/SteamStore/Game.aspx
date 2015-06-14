@@ -7,6 +7,7 @@
     <title><%= GameName %> | Steampowered</title>
     <link href="styles/gamesmenu.css" rel="stylesheet" />
     <link href="styles/gameview.css" rel="stylesheet" />
+    <link href="styles/gameViewPack.css" rel="stylesheet" />
     <script src="Scripts/jquery-1.11.3.min.js"></script>
     <script>
         $(document).ready(function () {

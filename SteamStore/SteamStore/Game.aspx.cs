@@ -19,7 +19,11 @@ namespace SteamStore
             if (!IsPostBack)
             {
                 if (string.IsNullOrEmpty(Request.QueryString["appId"]))
-                    return;//quit if appId doesn't exist or isn't specified
+                {
+                    Response.Redirect("/error.aspx?errorMessage="+Server.UrlEncode("No appId specified!"));//show error if querystring is wrong
+                    return;
+                }
+                    
                 var con = DbProvider.GetOracleConnection();
                 //appId parameter
 
@@ -45,8 +49,7 @@ namespace SteamStore
                     {
                         if (!r.Read())
                         {
-                            GameName = "Game doesn't exist";
-                            GameCategorie = "ERROR!";
+                            Response.Redirect("/error.aspx?errorMessage=" + Server.UrlEncode("appId not found!"));//show error if querystring is wrong
                             return;
                         }
                         GameName = (string)r["appName"];
@@ -183,6 +186,7 @@ namespace SteamStore
                     leftContent.Controls.Add(lc);
                 }
                 #endregion
+
             }
         }
     }

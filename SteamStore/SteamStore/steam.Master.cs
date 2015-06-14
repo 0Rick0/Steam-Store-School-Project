@@ -18,11 +18,11 @@ namespace SteamStore
         {
             if (Session["loggedin"] is bool && (bool)Session["loggedIn"])
             {
-                loginBar.InnerHtml = string.Format("<a href=\"/profile.aspx\">{0}</a>", Session["username"]);
+                loginBar.InnerHtml = string.Format("<a href=\"/login.aspx?logout=true&returnUrl="+Server.UrlEncode(Request.Url.ToString())+"\">logout</a> - <a href=\"/profile.aspx\">{0}</a>", Session["username"]);
             }
             else
             {
-                loginBar.InnerHtml = "<a href=\"/Login.aspx\">LOGIN</a>";
+                loginBar.InnerHtml = "<a href=\"/Login.aspx?returnUrl="+Server.UrlEncode(Request.Url.ToString())+"\">LOGIN</a>";
             }
         }
     }

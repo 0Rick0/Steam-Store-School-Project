@@ -13,6 +13,6 @@
             <div class="oldPrice"><%=OldPrice %></div>
             <div class="newPrice"><%=NewPrice %></div>
         </div>
-        <a href="/buy.aspx?packId=<%=PackId %>" class="buy">Buy!</a>
+        <a href="/BuyGame.aspx?packId=<%=PackId %>" class="buy">Buy!</a>
     </div>
 </div>
