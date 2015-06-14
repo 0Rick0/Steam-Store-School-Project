@@ -8,20 +8,29 @@ using System.Web.UI.WebControls;
 
 namespace SteamStore
 {
+    /// <summary>
+    /// Search something
+    /// </summary>
     public partial class search : System.Web.UI.Page
     {
-        
-
+        /// <summary>
+        /// When the page loads
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
+            //check if the variables are there
             if (string.IsNullOrEmpty(Request.QueryString["q"]))
             {
                 Response.Redirect("error.aspx?errorMessage="+Server.UrlEncode("No search query!"));
             }
 
+            //make regex readable query
 // ReSharper disable once PossibleNullReferenceException already checked above
             var regexQuery = "(" + Server.UrlDecode(Request.QueryString["q"]).Replace(" ",")|(") + ")";
 
+            //ask database
             using (var con = DbProvider.GetOracleConnection())
             {
                 var com = con.CreateCommand();
@@ -41,6 +50,7 @@ namespace SteamStore
                 var r = com.ExecuteReader();
                 while (r.Read())
                 {
+                    //fill view
                     var lc = new LiteralControl();
                     lc.Text = string.Format("<div class=\"searchResult\"><a href=\"/game.aspx?appId={0}\">{1}</a></div>",r["appid"],r["appname"]);
                     innerContent.Controls.Add(lc);

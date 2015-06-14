@@ -8,21 +8,32 @@ using System.Web.UI.WebControls;
 
 namespace SteamStore
 {
+    /// <summary>
+    /// Add a friend to a account
+    /// </summary>
     public partial class addFriend : System.Web.UI.Page
     {
+        /// <summary>
+        /// On page load
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(Request["friendId"]))
             {
                 Response.Redirect("error.aspx?errorMessage="+Server.UrlEncode("No friendId"));
             }
-            if (Session["loggedIn"] == null || (bool) Session["loggedIn"]!=true)
+
+            if (Session["loggedIn"] == null || (bool) Session["loggedIn"] != true)
             {
                 Response.Redirect("error.aspx?errorMessage=" + Server.UrlEncode("Not logged in!"));
             }
+
             using (var con = DbProvider.GetOracleConnection())
             {
                 int userid;
+
                 //get user id
                 using (var com = con.CreateCommand())
                 {
@@ -58,6 +69,7 @@ namespace SteamStore
                         Response.Redirect("error.aspx?errorMessage=" + Server.UrlEncode("Somthing whent wrong!"));
                     }
                 }
+
                 Response.Redirect("Profile.aspx");
             }
         }

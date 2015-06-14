@@ -8,12 +8,31 @@ using System.Web.UI.WebControls;
 
 namespace SteamStore
 {
+    /// <summary>
+    /// Display a game
+    /// </summary>
     public partial class Game : System.Web.UI.Page
     {
+        /// <summary>
+        /// The number of images
+        /// </summary>
         protected int Imagescnt { get; private set; }
+
+        /// <summary>
+        /// The name of the game
+        /// </summary>
         protected string GameName { get; private set; }
+
+        /// <summary>
+        /// The category of the game
+        /// </summary>
         protected string GameCategorie { get; private set; }
 
+        /// <summary>
+        /// When the page loads
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -25,11 +44,9 @@ namespace SteamStore
                 }
                     
                 var con = DbProvider.GetOracleConnection();
+
                 //appId parameter
-
-
-
-
+                
                 //load game info
                 #region load info
                 using (var infoCom = con.CreateCommand())
@@ -52,6 +69,7 @@ namespace SteamStore
                             Response.Redirect("/error.aspx?errorMessage=" + Server.UrlEncode("appId not found!"));//show error if querystring is wrong
                             return;
                         }
+
                         GameName = (string)r["appName"];
                         GameCategorie = (string)r["categoriename"];
                     }
@@ -62,8 +80,6 @@ namespace SteamStore
                 #region load images
                 using (var picCom = con.CreateCommand())
                 {
-
-
                     picCom.CommandText = "SELECT appid, picid " +
                                       "FROM pictures " +
                                       "WHERE appid = :aid";
@@ -82,10 +98,13 @@ namespace SteamStore
                     while (r.Read())
                     {
                         Imagescnt++;
-                        lc.Text += string.Format("<div class=\"imgContainer\">" +
-                                                 "<img src=\"/images/games/{0}.png\" alt=\"Test Image\" />" +
-                                                 "</div>", r["picId"]);
+                        lc.Text += string.Format(
+                            "<div class=\"imgContainer\">" +
+                            "<img src=\"/images/games/{0}.png\" alt=\"Test Image\" />" +
+                            "</div>",
+                            r["picId"]);
                     }
+
                     imagesContainer.Controls.Add(lc);
                 }
                 #endregion
@@ -114,14 +133,15 @@ namespace SteamStore
                     while (r.Read())
                     {
                         var pack = (gameViewPack)Page.LoadControl("~/gameViewPack.ascx");
-                        pack.PackTitle = (string)r["pname"];
+                        pack.PackTitle = (string) r["pname"];
                         pack.PackId = (int) r["pid"];
-                        pack.NewPrice = ((float) r["pprice"]*(1 - (float) r["pdisc"])).ToString("f2")+"€";
+                        pack.NewPrice = ((float) r["pprice"] * (1 - (float) r["pdisc"]) ).ToString("f2")+"€";
                         if ((float) r["pdisc"] > 0)
                         {
                             pack.OldPrice = ((float) r["pprice"]).ToString("f2") + "€";
                             pack.Discount = (float) r["pdisc"]*100 + "%";
                         }
+
                         pack.PackGames = (string) r["pdesc"] + "<br/>" + (string) r["games"];
 
                         leftContent.Controls.Add(pack);
@@ -173,20 +193,24 @@ namespace SteamStore
                     var r = comCom.ExecuteReader();
                     while (r.Read())
                     {
-                        lc.Text += string.Format(@"<div class=""commentContainer"">
+                        lc.Text += string.Format(
+                            @"<div class=""commentContainer"">
     <a href=""/user.aspx?userId={0}"" class=""commentUser"">{1}</a>
     <div class=""commentText"">
         <p>
             {2}
         </p>
     </div>
-</div>", r["userId"], r["username"], r["text"]);
+</div>",
+                            r["userId"],
+                            r["username"],
+                            r["text"]);
                     }
+
                     lc.Text += "</div>";
                     leftContent.Controls.Add(lc);
                 }
                 #endregion
-
             }
         }
     }

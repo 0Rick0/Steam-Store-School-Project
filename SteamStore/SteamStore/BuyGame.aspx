@@ -12,7 +12,7 @@
     <uc1:GamesMenu runat="server" ID="GamesMenu" />
     <div class="innerContent">
         <div id="left">
-            <h1><%=GameTile %> For <%= GamePrice.ToString("f2") %>€</h1>
+            <h1><%=PackName %> For <%= GamePrice.ToString("f2") %>€</h1>
             <%=Games %>
         </div>
         <form id="frmRight" runat="server">

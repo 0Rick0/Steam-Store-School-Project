@@ -9,15 +9,36 @@ using Oracle.ManagedDataAccess.Client;
 
 namespace SteamStore
 {
+    /// <summary>
+    /// Buy a game
+    /// </summary>
     public partial class BuyGame : System.Web.UI.Page
     {
-        protected string GameTile { get; set; }
-        protected String Games { get; set; }
+        /// <summary>
+        /// The pack name
+        /// </summary>
+        protected string PackName { get; set; }
 
+        /// <summary>
+        /// The games of in the pack
+        /// </summary>
+        protected string Games { get; set; }
+
+        /// <summary>
+        /// The price of the pack
+        /// </summary>
         protected decimal GamePrice { get; set; }
 
+        /// <summary>
+        /// The current user balance
+        /// </summary>
         protected decimal Balance { get; set; }
 
+        /// <summary>
+        /// Load of page
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["loggedIn"]==null || (bool)Session["loggedIn"] != true)
@@ -25,10 +46,12 @@ namespace SteamStore
                 //not logged in redirect to login page
                 Response.Redirect("/Login.aspx?returnUrl="+Server.UrlEncode(Request.Url.ToString()));
             }
+
             if (string.IsNullOrEmpty(Request.QueryString["packId"]))
             {
                 Response.Redirect("/error.aspx?errorMessage="+Server.UrlEncode("No packId specified!"));
             }
+
             using (var con = DbProvider.GetOracleConnection())
             {
                 using (var com = con.CreateCommand())
@@ -49,10 +72,11 @@ namespace SteamStore
                     com.Parameters.Add(p);
                     var r = com.ExecuteReader();
                     r.Read();
-                    GameTile = (string)r["pname"];
+                    PackName = (string)r["pname"];
                     Games = (string)r["games"];
                     GamePrice = (decimal) r["total"];
                 }
+
                 using (var balCom = con.CreateCommand())
                 {
                     balCom.CommandText = "SELECT balance " +
@@ -67,14 +91,19 @@ namespace SteamStore
 
                     Balance = Convert.ToDecimal((float)balCom.ExecuteScalar());
                 }
+
                 if(Balance-GamePrice<0)
                 {
                     balAfter.CssClass = "red";
                 }
             }
-
         }
 
+        /// <summary>
+        /// Confirm buy
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Unnamed3_Click(object sender, EventArgs e)
         {
             using (var con = DbProvider.GetOracleConnection())
@@ -98,6 +127,7 @@ namespace SteamStore
 
                     com.Parameters.Add(pUid);
                     com.Parameters.Add(pPid);
+
                     //Buy the games
                     try
                     {
@@ -110,17 +140,15 @@ namespace SteamStore
                         {
                             Response.Redirect("/error.aspx?errorMessage="+Server.UrlEncode("Not enough money!"));
                         }
+
                         return;
                     }
                     catch (Exception)
                     {
-                        
                         throw;
                     }
 
                     Response.Redirect("/index.aspx");
-
-
                 }
             }
         }

@@ -12,8 +12,16 @@ using System.Web.UI.WebControls;
 
 namespace SteamStore
 {
+    /// <summary>
+    /// Login form
+    /// </summary>
     public partial class Login : Page
     {
+        /// <summary>
+        /// When the page loads
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Request.QueryString["logout"] != null)
@@ -27,8 +35,14 @@ namespace SteamStore
             }
         }
 
+        /// <summary>
+        /// When the user clicks on submit
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void submit_Click(object sender, EventArgs e)
         {
+            //encrypt the password
             var user = username.Text;
             var pass = password.Text;
             var sha = SHA256.Create();
@@ -37,7 +51,7 @@ namespace SteamStore
             var com = con.CreateCommand();
             com.CommandText = "SELECT count(*) FROM steam_user WHERE Username = :usr AND passwordHash = :pass";
             
-            
+            //create parameters
             var pUser = com.CreateParameter();
             pUser.DbType= DbType.String;
             pUser.Value = user;
@@ -46,16 +60,15 @@ namespace SteamStore
 
             var pPass = com.CreateParameter();
             pPass.DbType = DbType.String;
-            pPass.Value = BitConverter.ToString(encrypted).Replace("-","");
+            pPass.Value = BitConverter.ToString(encrypted).Replace("-",string.Empty);
             pPass.ParameterName = "pass";
             pPass.Direction = ParameterDirection.Input;
 
             com.Parameters.Add(pUser);
             com.Parameters.Add(pPass);
             
-            Debug.WriteLine(pPass.Value);
+            //check if the user can login
             var cnt = (decimal)com.ExecuteScalar();
-            Debug.WriteLine(cnt);
             if (cnt >= 1)
             {
                 //login
@@ -65,6 +78,7 @@ namespace SteamStore
                 ((Site1) Master).UpdateLoginLabel();
                 if (!string.IsNullOrEmpty(Request.QueryString["returnUrl"]))
                 {
+                    //go to returnrl
                     Response.Redirect(Server.UrlDecode(Request.QueryString["returnUrl"]));
                 }
             }
@@ -75,8 +89,6 @@ namespace SteamStore
                 Session["loggedIn"] = false;
                 lblPassword.Text = "not loggedIn!";
             }
-            
-
         }
     }
 }

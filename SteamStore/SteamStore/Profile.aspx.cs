@@ -8,18 +8,43 @@ using System.Web.UI.WebControls;
 
 namespace SteamStore
 {
+    /// <summary>
+    /// Show a profile
+    /// </summary>
     public partial class Profile : System.Web.UI.Page
     {
+        /// <summary>
+        /// The username
+        /// </summary>
         protected string Username { get; set; }
+
+        /// <summary>
+        /// the balance if available
+        /// </summary>
         protected decimal Balance { get; set; }
+
+        /// <summary>
+        /// If it is the person it self
+        /// </summary>
         protected bool IsSelf { get; set; }
 
+        /// <summary>
+        /// the id of the user
+        /// </summary>
         protected int UserId { get; set; }
+
+        /// <summary>
+        /// If the user is a friend
+        /// </summary>
         protected bool IsFriend { get; set; }
 
+        /// <summary>
+        /// When the page is loaded
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
-            
             using (var con = DbProvider.GetOracleConnection())
             {
                 if (string.IsNullOrEmpty(Request.QueryString["userId"]))
@@ -29,14 +54,13 @@ namespace SteamStore
                     {
                         Response.Redirect("Login.aspx?returnUrl="+Server.UrlEncode(Request.Url.ToString()));
                     }
+
                     Username = (string)Session["Username"];
                     IsSelf = true;//the add form balance will be displayed
                     IsFriend = true;//nothing will be displayed
                     //get username, userId and balance
                     using (var com = con.CreateCommand())
                     {
-                        
-
                         com.CommandText = "SELECT username, userid, balance " +
                                           "FROM steam_user " +
                                           "WHERE username = :usrid";
@@ -58,8 +82,6 @@ namespace SteamStore
                     //get usrename and id
                     using (var com = con.CreateCommand())
                     {
-
-
                         com.CommandText = "SELECT username, userid " +
                                           "FROM steam_user " +
                                           "WHERE userId = :usrid";
@@ -74,6 +96,7 @@ namespace SteamStore
                         UserId = Convert.ToInt32((long)r["userId"]);
                         Username = (string)r["username"];
                     }
+
                     //check if the user is logged in and if the userid is a friend
                     if (!(Session["loggedIn"] == null || (bool)Session["loggedIn"] == false))
                     {
@@ -84,8 +107,7 @@ namespace SteamStore
                                               "WHERE u.userid = f.userid " +
                                               "AND username = :usrn " +
                                               "AND friendUserId = :usrid";
-
-
+                            
                             var pusr = com.CreateParameter();
                             pusr.Direction = ParameterDirection.Input;
                             pusr.DbType = DbType.String;
@@ -109,6 +131,7 @@ namespace SteamStore
                         IsFriend = true;//nothing will be displayed
                     }
                 }
+
                 //get friends
                 using (var com = con.CreateCommand())
                 {
@@ -130,6 +153,7 @@ namespace SteamStore
                         friends.Controls.Add(lc);
                     }
                 }
+
                 //get achievements
                 using (var com = con.CreateCommand())
                 {
@@ -152,9 +176,7 @@ namespace SteamStore
                         achievements.Controls.Add(lc);
                     }
                 }
-                
             }
-            
         }
     }
 }
