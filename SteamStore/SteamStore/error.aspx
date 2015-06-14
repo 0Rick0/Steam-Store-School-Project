@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/steam.Master" AutoEventWireup="true" CodeBehind="error.aspx.cs" Inherits="SteamStore.styles.error" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/steam.Master" AutoEventWireup="true" CodeBehind="error.aspx.cs" Inherits="SteamStore.error" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>What did you do!</title>
     <style>

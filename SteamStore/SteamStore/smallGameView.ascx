@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="smallGameView.ascx.cs" Inherits="SteamStore.styles.smallGameView" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="smallGameView.ascx.cs" Inherits="SteamStore.smallGameView" %>
 
 <a class="gameContainer" href="#" id="gameContainerLink" runat="server">
     <div class="imageCenter" >

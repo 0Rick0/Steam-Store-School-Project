@@ -10,15 +10,24 @@
 namespace SteamStore {
     
     
-    public partial class GamesMenu {
+    public partial class Profile {
         
         /// <summary>
-        /// topUl control.
+        /// friends control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl topUl;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl friends;
+        
+        /// <summary>
+        /// achievements control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl achievements;
     }
 }

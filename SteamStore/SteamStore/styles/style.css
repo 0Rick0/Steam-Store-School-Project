@@ -24,6 +24,7 @@ nav{
 	margin-right: auto;
 	margin-left: auto;
 	line-height: 100px;
+    position: relative;
 }
 
 .navItem{
@@ -41,7 +42,9 @@ nav{
 }
 
 #loginBar {
-    float: right;   
+    position: absolute;
+    right: 0px;
+    top: 0px;
 }
 
 nav a,

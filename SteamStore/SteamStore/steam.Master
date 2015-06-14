@@ -19,7 +19,7 @@
                 </div>
                 <div class="navItem"><a href="/index.aspx">STORE</a></div>
                 <div class="navItem"><a href="/MyGames.aspx">GAMES</a></div>
-                <div class="navItem">FRIENDS</div>
+                <div class="navItem"><a href="/Profile.aspx">PROFILE</a></div>
                 <div id="loginBar" runat="server" ClientIDMode="Static">LOGIN</div>
             </nav>
         </div>

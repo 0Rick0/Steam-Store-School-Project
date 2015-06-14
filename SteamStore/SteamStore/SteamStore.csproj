@@ -60,6 +60,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="addBalance.aspx" />
     <Content Include="BuyGame.aspx" />
     <Content Include="Game.aspx" />
     <Content Include="gameViewPack.ascx" />
@@ -68,8 +69,10 @@
     <Content Include="MyGames.aspx" />
     <Content Include="packages.config" />
     <None Include="Scripts\jquery-1.11.3.intellisense.js" />
+    <Content Include="Profile.aspx" />
     <Content Include="Scripts\jquery-1.11.3.js" />
     <Content Include="Scripts\jquery-1.11.3.min.js" />
+    <Content Include="search.aspx" />
     <Content Include="steam.Master" />
     <Content Include="Scripts\jquery-1.11.3.min.map" />
     <None Include="Web.Debug.config">
@@ -92,8 +95,10 @@
     <Content Include="styles\gameViewPack.css" />
     <Content Include="styles\login.css" />
     <Content Include="styles\MyGames.css" />
+    <Content Include="styles\Profile.css" />
     <Content Include="styles\reset.css" />
     <Content Include="smallGameView.ascx" />
+    <Content Include="styles\search.css" />
     <Content Include="styles\smallGame.css" />
     <Content Include="styles\style.css" />
     <Content Include="Web.config">
@@ -101,6 +106,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="addBalance.aspx.cs">
+      <DependentUpon>addBalance.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="addBalance.aspx.designer.cs">
+      <DependentUpon>addBalance.aspx</DependentUpon>
+    </Compile>
     <Compile Include="BuyGame.aspx.cs">
       <DependentUpon>BuyGame.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -144,7 +156,21 @@
     <Compile Include="MyGames.aspx.designer.cs">
       <DependentUpon>MyGames.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Profile.aspx.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Profile.aspx.designer.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="search.aspx.cs">
+      <DependentUpon>search.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="search.aspx.designer.cs">
+      <DependentUpon>search.aspx</DependentUpon>
+    </Compile>
     <Compile Include="steam.Master.cs">
       <DependentUpon>steam.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

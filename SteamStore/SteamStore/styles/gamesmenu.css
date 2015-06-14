@@ -5,6 +5,7 @@
 	margin-left: auto;
 	margin-right: auto;
 	color: #67c1f5;
+    position: relative;
 }
 
 #categories > ul{
@@ -71,7 +72,9 @@
 /*Search box*/
 #sbc{
     height: 32px;
-    float: right;
+    position: absolute;
+    right: 0px;
+    top: 0px;
     padding-left: 6px;
     padding-right: 6px;
     border-left: 2px solid rgba( 0, 0, 0, 0.4 );
@@ -93,7 +96,7 @@
 }
 
 
-#sb input[type="button"]{
+#sb input[type="submit"]{
     border: none;
     outline: 0;
     background: transparent;

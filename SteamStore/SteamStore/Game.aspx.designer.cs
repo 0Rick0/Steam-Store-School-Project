@@ -19,7 +19,7 @@ namespace SteamStore {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::SteamStore.styles.GamesMenu GamesMenu;
+        protected global::SteamStore.GamesMenu GamesMenu;
         
         /// <summary>
         /// imagesContainer control.

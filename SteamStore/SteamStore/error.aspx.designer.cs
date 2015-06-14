@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SteamStore.styles
+namespace SteamStore
 {
 
 

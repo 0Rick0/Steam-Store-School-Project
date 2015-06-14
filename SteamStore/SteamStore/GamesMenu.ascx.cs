@@ -1,14 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Linq;
 using System.Text;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using Oracle.ManagedDataAccess.Client;
 
-namespace SteamStore.styles
+namespace SteamStore
 {
     public partial class GamesMenu : System.Web.UI.UserControl
     {

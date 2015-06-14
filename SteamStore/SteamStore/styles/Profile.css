@@ -1,0 +1,73 @@
+﻿#innerContent {
+    color: white;
+    background-color: #000000;
+    background-color: rgba(0, 0, 0, 0.2);
+    margin-top: 12px;
+    padding: 15px;
+}
+
+#innerContent h2 {
+    color: #67c1f5;
+    font-size: 18px;
+    border-bottom: 1px solid #67c1f5;
+    margin-bottom: 6px;
+}
+
+#top {
+    margin-bottom: 32px;
+    display: inline-block;
+}
+
+#top h1 {
+    font-size: 46px;
+}
+
+#friends {
+    margin-bottom: 12px;
+}
+
+.friend {
+    margin-bottom: 4px;
+    color: #acb2b8;
+    font-size: 14px;
+}
+
+.friend h2 {
+    font-size: larger;
+    color: white!important;
+    border-bottom: none!important;
+}
+
+#achievements {
+    margin-bottom: 12px;
+}
+
+.achievement {
+    margin-bottom: 4px;
+    color: #acb2b8;
+    font-size: 14px;
+}
+
+.achievement h2 {
+    color: white!important;
+    border-bottom:none!important;
+}
+
+.achievement h2,
+.achievement div {
+    display: inline-block;
+}
+
+#addBalanceForm {
+    float: right;
+    width: 100px;
+}
+#addbalance {
+    display: block;
+    width: 100px;
+}
+
+#addBalanceForm input {
+    width: 100px;
+    display: block;
+}
