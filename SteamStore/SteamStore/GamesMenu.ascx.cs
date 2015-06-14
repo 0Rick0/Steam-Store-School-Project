@@ -19,6 +19,7 @@ namespace SteamStore
         {
             if (!IsPostBack)
             {
+                //if it isn't a postback load the items
                 LoadListItems();
             }
         }

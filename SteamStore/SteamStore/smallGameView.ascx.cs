@@ -36,6 +36,7 @@ namespace SteamStore
         /// </summary>
         public void LoadData()
         {
+            //load all the data to the form
             gameContainerImage.Src = string.Format("/images/games/{0}.png",ImageId);
             gameContainerTitle.InnerText = Title;
             gameContainerImage.Alt = Title;

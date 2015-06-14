@@ -41,6 +41,7 @@ namespace SteamStore
         /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
+            //check if all the variables are available
             if (Session["loggedIn"]==null || (bool)Session["loggedIn"] != true)
             {
                 //not logged in redirect to login page
@@ -56,6 +57,8 @@ namespace SteamStore
             {
                 using (var com = con.CreateCommand())
                 {
+                    //get all the info of the game
+                    //packid, packname, total price, and all the games seperated by '<br/>'
                     com.CommandText =
                         "SELECT p.packid as pid, p.PACKNAME as pname, p.price*(1-p.discount) as total, listagg(appname,'<br/>') WITHIN GROUP(ORDER BY ap.packid) AS games  " +
                         "FROM pack p, app_pack ap, app a  " +
@@ -63,6 +66,7 @@ namespace SteamStore
                         "AND ap.packid = p.packid  " +
                         "AND ap.packid = :pid  " +
                         "GROUP BY p.packid, p.packname, p.price, p.discount";
+
                     var p = com.CreateParameter();
                     p.Direction = ParameterDirection.Input;
                     p.DbType = DbType.Int32;
@@ -70,6 +74,8 @@ namespace SteamStore
                     p.Value = Request.QueryString["packId"];
 
                     com.Parameters.Add(p);
+
+                    //read one row and save data
                     var r = com.ExecuteReader();
                     r.Read();
                     PackName = (string)r["pname"];
@@ -79,6 +85,7 @@ namespace SteamStore
 
                 using (var balCom = con.CreateCommand())
                 {
+                    //get the balance of the user
                     balCom.CommandText = "SELECT balance " +
                                          "FROM steam_user " +
                                          "WHERE username = :usr";
@@ -110,9 +117,11 @@ namespace SteamStore
             {
                 using (var com = con.CreateCommand())
                 {
-                    System.Diagnostics.Debug.WriteLine(Request.QueryString["packId"]);
+                    //execute an stored proceure to add the games
                     com.CommandType = CommandType.StoredProcedure;
                     com.CommandText = "BuyGame";
+
+                    //generate the parameters
                     var pPid = com.CreateParameter();
                     pPid.DbType = DbType.String;
                     pPid.Direction = ParameterDirection.Input;
@@ -135,6 +144,7 @@ namespace SteamStore
                     }
                     catch (OracleException oex)
                     {
+                        //if it is error 20000 then the user doesn't exist(not possible, checked at login) or the user doesn't have enough money
                         System.Diagnostics.Debug.WriteLine("OE:"+oex.Number+" = "+oex.ToString());
                         if (oex.Number == 20000)
                         {
@@ -148,6 +158,7 @@ namespace SteamStore
                         throw;
                     }
 
+                    //go back to index.aspx
                     Response.Redirect("/index.aspx");
                 }
             }

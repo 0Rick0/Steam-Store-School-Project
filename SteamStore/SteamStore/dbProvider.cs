@@ -19,8 +19,11 @@ namespace SteamStore
         /// <returns>The connection</returns>
         public static DbConnection GetOracleConnection()
         {
+            //get an connection and put the connection string in it
+            //it shouldn't be null, so if it is an error may be uncaught. this is an fatal exception so it doesn't need to be
             var con = OracleClientFactory.Instance.CreateConnection();
             con.ConnectionString = ConfigurationManager.ConnectionStrings["OracleConnection"].ConnectionString;
+            //open the connection and return it
             con.Open();
             return con;
         }

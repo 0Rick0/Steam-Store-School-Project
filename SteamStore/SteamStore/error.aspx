@@ -17,6 +17,6 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="contentPlaceHolder" runat="server">
     <div class="error">
         What dit you do!<br/>
-        <%=Server.UrlDecode(Request.QueryString["errorMessage"]) %>
+        <%=Server.UrlDecode(Request.QueryString["errorMessage"])/*Show the errorMessage querystring*/ %>
     </div>
 </asp:Content>

@@ -35,6 +35,8 @@ namespace SteamStore
             {
                 using (var com = con.CreateCommand())
                 {
+                    //select all games that are somewhat alike
+                    //with appid, categorieid, appname and all the descriptions
                     com.CommandText = "SELECT a.appid, appname " +
                                       "FROM app a, (SELECT appid, listagg(ai.title ||' ' || ai.text) WITHIN GROUP(ORDER BY ai.appid) as descconc " +
                                       "FROM APPSTOREITEM ai " +
@@ -50,24 +52,25 @@ namespace SteamStore
 
                     var r = com.ExecuteReader();
 
+                    //if there are rows add a header and place the results
                     if (r.HasRows)
                     {
                         var spacer = new LiteralControl();
                         spacer.Text = string.Format("<h2>Games</h2>");
                         innerContent.Controls.Add(spacer);
-                    }
-
-                    while (r.Read())
-                    {
-                        //fill view
-                        var lc = new LiteralControl();
-                        lc.Text = string.Format("<div class=\"searchResult\"><a href=\"/game.aspx?appId={0}\">{1}</a></div>", r["appid"], r["appname"]);
-                        innerContent.Controls.Add(lc);
+                        while (r.Read())
+                        {
+                            //fill view
+                            var lc = new LiteralControl();
+                            lc.Text = string.Format("<div class=\"searchResult\"><a href=\"/game.aspx?appId={0}\">{1}</a></div>", r["appid"], r["appname"]);
+                            innerContent.Controls.Add(lc);
+                        }
                     }
                 }
 
                 using (var com = con.CreateCommand())
                 {
+                    //select all user that are somewhat alike
                     com.CommandText = "SELECT userid, username " +
                                       "FROM steam_user " +
                                       "WHERE REGEXP_SUBSTR(username||userid,:qer,1,1,'i') IS NOT NULL";
@@ -80,19 +83,19 @@ namespace SteamStore
 
                     var r = com.ExecuteReader();
 
+                    //if there are rows add a header and the data
                     if (r.HasRows)
                     {
                         var spacer = new LiteralControl();
                         spacer.Text = string.Format("<h2>Users</h2>");
                         innerContent.Controls.Add(spacer);
-                    }
-
-                    while (r.Read())
-                    {
-                        //fill view
-                        var lc = new LiteralControl();
-                        lc.Text = string.Format("<div class=\"searchResult\"><a href=\"/profile.aspx?userId={0}\">{1}</a></div>", r["userid"], r["username"]);
-                        innerContent.Controls.Add(lc);
+                        while (r.Read())
+                        {
+                            //fill view
+                            var lc = new LiteralControl();
+                            lc.Text = string.Format("<div class=\"searchResult\"><a href=\"/profile.aspx?userId={0}\">{1}</a></div>", r["userid"], r["username"]);
+                            innerContent.Controls.Add(lc);
+                        }
                     }
                 }
             }

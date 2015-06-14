@@ -20,6 +20,7 @@ namespace SteamStore
         /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
+            //get all required data
             var id = 1;
             var limit = 50;
             if (Request.QueryString["id"] != null)
@@ -42,6 +43,7 @@ namespace SteamStore
         /// <param name="limit">How much to load</param>
         private void LoadGames(int id, int limit = 50)
         {
+            //get all the games(withing a categorie if id!!=1)
             var con = DbProvider.GetOracleConnection();
             var com = con.CreateCommand();
             if (id == 1)
@@ -86,6 +88,7 @@ AND rownum <= :rn";
 
             while (r.Read())
             {
+                //add everything to the page using an smallGameView control
                 var uc = (smallGameView)Page.LoadControl("~/smallGameView.ascx");
 
                 uc.GameId = r["appId"].ToString();

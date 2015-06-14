@@ -24,6 +24,7 @@ namespace SteamStore
         /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
+            //sign off the user if logout is specified
             if (Request.QueryString["logout"] != null)
             {
                 Session.Clear();//remove all data from session if loggout

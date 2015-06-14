@@ -27,6 +27,7 @@ namespace SteamStore
         /// </summary>
         public void UpdateLoginLabel()
         {
+            //check if the use is logged in and display login or logout+username
             if (Session["loggedin"] is bool && (bool)Session["loggedIn"])
             {
                 loginBar.InnerHtml = string.Format("<a href=\"/login.aspx?logout=true&returnUrl="+Server.UrlEncode(Request.Url.ToString())+"\">logout</a> - <a href=\"/profile.aspx\">{0}</a>", Session["username"]);

@@ -20,11 +20,13 @@ namespace SteamStore
         /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
+            //check if the user is logged in, otherwise redirect to login page
             if (Session["username"]==null || string.IsNullOrEmpty((string)Session["username"]))
             {
                 Response.Redirect("Login.aspx?returnUrl="+Server.UrlEncode(Request.Url.ToString()));
             }
 
+            //get the required info
             var id = 1;
             var limit = 50;
             if (Request.QueryString["id"] != null)
@@ -50,6 +52,7 @@ namespace SteamStore
             var con = DbProvider.GetOracleConnection();
             var com = con.CreateCommand();
             
+            //get all games of the user
             com.CommandText =
 @"SELECT a.appId as appId,a.appName as appName,  p.PICID as picId
 FROM app a JOIN (
@@ -82,6 +85,7 @@ AND rownum <= :rn";
 
             while (r.Read())
             {
+                //put them into the page
                 var uc = (smallGameView)Page.LoadControl("~/smallGameView.ascx");
                 
                 uc.GameId = r["appId"].ToString();

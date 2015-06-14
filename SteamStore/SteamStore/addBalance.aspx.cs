@@ -43,18 +43,21 @@ namespace SteamStore
                 using (var com = con.CreateCommand())
                 {
                     com.CommandText = "UPDATE steam_user SET balance = balance + :addb WHERE username = :usrn";
+
                     var pBal = com.CreateParameter();
                     pBal.Direction = ParameterDirection.Input;
                     pBal.DbType = DbType.Decimal;
                     pBal.Value = toadd;
                     pBal.ParameterName = "addb";
                     com.Parameters.Add(pBal);
+
                     var pUsrn = com.CreateParameter();
                     pUsrn.Direction = ParameterDirection.Input;
                     pUsrn.DbType = DbType.String;
                     pUsrn.Value = Session["username"];
                     pUsrn.ParameterName = "usrn";
                     com.Parameters.Add(pUsrn);
+
                     var rows = com.ExecuteNonQuery();
                     if (rows < 1)
                     {

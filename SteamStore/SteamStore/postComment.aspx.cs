@@ -28,7 +28,7 @@ namespace SteamStore
             {
                 using (var com = con.CreateCommand())
                 {
-                    //todo should be replaced with a sequence, this doesn't like mvcc = double id's by way of personal view per connection
+                    //todo max + 1 should be replaced with a sequence, this doesn't like mvcc = double id's by way of personal view per connection
                     com.CommandText = "INSERT INTO user_comment " +
                                       "VALUES ((SELECT max(commentid)+1 FROM user_comment), :apid, (SELECT userid FROM steam_user WHERE username=:usrn), :pcomment)";
 
@@ -54,13 +54,14 @@ namespace SteamStore
                     com.Parameters.Add(pUsrn);
                     com.Parameters.Add(pComment);
 
-                    if (com.ExecuteNonQuery() <1)
+                    if (com.ExecuteNonQuery() < 1)
                     {
+                        //if less then one row is inserted then somthing is wrong
                         Response.Redirect("error.aspx?errorMessage=" + Server.UrlEncode("Somthing went wrong while executing"));
                     }
 
                 }
-
+                //go back to the game page
                 Response.Redirect("Game.aspx?appId="+Request["appId"]);
             }
         }
