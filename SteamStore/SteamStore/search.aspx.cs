@@ -49,6 +49,14 @@ namespace SteamStore
                     com.Parameters.Add(pQ);
 
                     var r = com.ExecuteReader();
+
+                    if (r.HasRows)
+                    {
+                        var spacer = new LiteralControl();
+                        spacer.Text = string.Format("<h2>Games</h2>");
+                        innerContent.Controls.Add(spacer);
+                    }
+
                     while (r.Read())
                     {
                         //fill view

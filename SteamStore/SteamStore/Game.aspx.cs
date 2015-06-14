@@ -195,7 +195,7 @@ namespace SteamStore
                     {
                         lc.Text += string.Format(
                             @"<div class=""commentContainer"">
-    <a href=""/user.aspx?userId={0}"" class=""commentUser"">{1}</a>
+    <a href=""/profile.aspx?userId={0}"" class=""commentUser"">{1}</a>
     <div class=""commentText"">
         <p>
             {2}

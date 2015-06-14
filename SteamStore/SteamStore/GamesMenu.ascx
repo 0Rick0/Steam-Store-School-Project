@@ -4,7 +4,7 @@
         
     </ul>
     <div id="sbc">
-            <form action="search.aspx" method="get" id="sb"><input type="text" name="q"><input type="submit" value="Search"></form>
+            <form action="search.aspx" method="get" id="sb"><input type="text" name="q" placeholder="Search games or users"><input type="submit" value="Search"></form>
 
     </div>
 </div>

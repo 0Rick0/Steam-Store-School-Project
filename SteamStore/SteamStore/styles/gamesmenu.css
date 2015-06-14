@@ -95,6 +95,19 @@
     outline: 0;
 }
 
+#sb input[type="text"]::-webkit-input-placeholder{
+    color: black;
+}
+#sb input[type="text"]:-moz-placeholder{
+    color: black;
+}
+#sb input[type="text"]::-moz-placeholder{
+    color: black;
+}
+#sb input[type="text"]:-ms-input-placeholder {
+    color: black;
+}
+
 
 #sb input[type="submit"]{
     border: none;
