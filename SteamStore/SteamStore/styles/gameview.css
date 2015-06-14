@@ -138,3 +138,39 @@ a.commentUser:hover{
     font-size:13px;
     color:#acb2b8;
 }
+/*Place comment*/
+textarea[name=comment]{
+	width: calc(70%) !important;
+	display:inline-block;
+	height: 62px !important;
+	border: none;
+	padding:0;
+	margin: 0;
+	
+}
+
+#commentFrm{
+	display: inline-block;
+	padding:0;
+	vertical-align: top;
+	height: 62px;
+}
+
+#commentFrm input[type=submit]{
+	color: #D2E885;
+    font-size: 18px;
+    height: 100%;
+    background: linear-gradient( to bottom, rgba(121,153,5,1) 5%, rgba(83,105,4,1) 95%);
+    text-decoration: none;
+    padding: 4px;
+    -ms-border-radius: 5px;
+    border-radius: 5px;
+    padding-left: 8px;
+    padding-right: 8px;
+	border: none;
+}
+
+#commentFrm input[type=submit]:hover{
+	background: linear-gradient( to bottom, rgba(164,208,7,1) 5%, rgba(107,135,5,1) 95%);
+    color: #fff;
+}

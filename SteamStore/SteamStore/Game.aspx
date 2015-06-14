@@ -49,6 +49,13 @@
         <div class="titleDiv"><%= GameCategorie + ": " + GameName %></div>
         <div id="leftContent" class="leftContent" runat="server">
         </div>
+        <div class="leftContent">
+            <textarea name="comment" form="commentFrm">content</textarea>
+            <form id="commentFrm" action="postComment.aspx" method="post">
+                <input type="hidden" name="appId" value="<%= Request.QueryString["appId"] %>"/>
+                <input type="submit"/>
+            </form>
+        </div>
         <div class="rightContent"></div>
     </div>
 </asp:Content>

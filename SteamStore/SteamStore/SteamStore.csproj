@@ -70,6 +70,7 @@
     <Content Include="MyGames.aspx" />
     <Content Include="packages.config" />
     <None Include="Scripts\jquery-1.11.3.intellisense.js" />
+    <Content Include="postComment.aspx" />
     <Content Include="Profile.aspx" />
     <Content Include="Scripts\jquery-1.11.3.js" />
     <Content Include="Scripts\jquery-1.11.3.min.js" />
@@ -163,6 +164,13 @@
     </Compile>
     <Compile Include="MyGames.aspx.designer.cs">
       <DependentUpon>MyGames.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="postComment.aspx.cs">
+      <DependentUpon>postComment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="postComment.aspx.designer.cs">
+      <DependentUpon>postComment.aspx</DependentUpon>
     </Compile>
     <Compile Include="Profile.aspx.cs">
       <DependentUpon>Profile.aspx</DependentUpon>
